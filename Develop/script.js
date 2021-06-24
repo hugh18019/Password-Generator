@@ -97,11 +97,11 @@ function createPassword() {
 }
 
  //Randomly generate a type of a criteria
-// function randomCrit() {
-//   var max = selectedCriteria.length;
-//     var critIdx = Math.floor( Math.random() * max );
-//     var curCrit = selectedCriteria( critIdx );
-// }
+function randomCrit() {
+  var max = selectedCriteria.length;
+    var critIdx = Math.floor( Math.random() * max );
+    var curCrit = selectedCriteria( critIdx );
+}
 
 // //Generate lowercase characters
 // function generateLowerCase() {
