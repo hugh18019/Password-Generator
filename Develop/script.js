@@ -113,13 +113,13 @@ function generateLowerCase() {
     }
 }
 
-// function generateUpperCase() {
-//   for( var j = 0; j < criteriaLengths[i]; j++ ) {
-//     var max = 26;
-//       var charIdx = Math.floor( Math.random() * max );  
-//       password.push( alphabet[charIdx].toUpperCase() );
-//   }
-// }
+function generateUpperCase() {
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
+    var max = 26;
+      var charIdx = Math.floor( Math.random() * max );  
+      password.push( alphabet[charIdx].toUpperCase() );
+  }
+}
 
 // function generateNumeric() {
 
