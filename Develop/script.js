@@ -103,15 +103,15 @@ function randomCrit() {
     var curCrit = selectedCriteria( critIdx );
 }
 
-// //Generate lowercase characters
-// function generateLowerCase() {
-//   for( var j = 0; j < criteriaLengths[i]; j++ ) {
-//         var max = 26;
-//           var charIdx = Math.floor( Math.random() * max );
-//           password.push( alphabet[charIdx] );   
-//       }
-//     }
-// }
+//Generate lowercase characters
+function generateLowerCase() {
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
+        var max = 26;
+          var charIdx = Math.floor( Math.random() * max );
+          password.push( alphabet[charIdx] );   
+      }
+    }
+}
 
 // function generateUpperCase() {
 //   for( var j = 0; j < criteriaLengths[i]; j++ ) {
