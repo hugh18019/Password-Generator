@@ -29,3 +29,16 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+
+
+
+function getLength() {
+  var length = prompt( "Enter the length between 8 and 128 for the password." );
+  // while( typeof length != Number ) {
+  //   length = prompt( "Enter a number for the length of the password." );
+  // }
+  while( length < 8 || length > 128 ) {
+    length = prompt( "Enter a length between 8 and 128." );
+  }
+  totalLength = length;
+}
