@@ -31,7 +31,6 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-
 function getLength() {
   var length = prompt( "Enter the length between 8 and 128 for the password." );
   // while( typeof length != Number ) {
@@ -42,3 +41,13 @@ function getLength() {
   }
   totalLength = length;
 }
+
+function getCharTypes() {
+  for( var key of allCriteria ) {
+    var select = confirm( "select " + key + "?" );
+    if( select ) {
+      selectedCriteria.push( key );
+    }
+  }
+}
+
