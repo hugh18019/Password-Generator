@@ -7,6 +7,10 @@ const numbers = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
 var special_characters = ' !"#$%& ' + ' ()*+,-./:;<=>?@[\]^_`{|}~ ';
 
 
+const selectedCriteria = [];
+
+
+
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
