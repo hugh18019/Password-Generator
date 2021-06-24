@@ -51,3 +51,27 @@ function getCharTypes() {
   }
 }
 
+function getCritLength() {
+  for( var i = 0; i < selectedCriteria.length; i++ ) {
+    if( i === 0 ) {
+      var criteriaLeft = selectedCriteria.length - 1;
+      var maxLength = totalLength - criteriaLeft;
+      var length = Math.floor( Math.random() * maxLength + 1 );
+      criteriaLengths.push( length );
+      lengthSoFar = lengthSoFar + length;
+    }
+    else if( i === selectedCriteria.length - 1 ) {
+      var length = totalLength - lengthSoFar;
+      lengthSoFar = totalLength;
+      criteriaLengths.push( length );
+    }
+    else {
+      var criteriaLeft = selectedCriteria.length - 1 - i;
+      var maxLength = totalLength - lengthSoFar - criteriaLeft;
+      var length = Math.floor( Math.random() * maxLength + 1 );
+      lengthSoFar = lengthSoFar + length;
+      criteriaLengths.push( length );
+    }
+  }
+}
+
