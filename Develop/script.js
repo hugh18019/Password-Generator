@@ -8,7 +8,7 @@ var special_characters = ' !"#$%& ' + ' ()*+,-./:;<=>?@[\]^_`{|}~ ';
 
 
 const selectedCriteria = [];
-
+const criteriaLengths = [];
 
 
 
