@@ -31,6 +31,17 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
+function generatePassword() {
+  getLength();
+  console.log( totalLength );
+  getCharTypes();
+  console.log( selectedCriteria );
+  getCritLength();
+  console.log( criteriaLengths );
+  return createPassword();
+}
+
+
 function getLength() {
   var length = prompt( "Enter the length between 8 and 128 for the password." );
   // while( typeof length != Number ) {
@@ -75,3 +86,45 @@ function getCritLength() {
   }
 }
 
+
+
+function createPassword() {
+  for( var i = 0; i < totalLength; i++ ) {
+    var curCrit = randomCrit();
+    if( curCrit == "lowercase" ) {
+      generateLowerCase();
+  }
+}
+
+ //Randomly generate a type of a criteria
+// function randomCrit() {
+//   var max = selectedCriteria.length;
+//     var critIdx = Math.floor( Math.random() * max );
+//     var curCrit = selectedCriteria( critIdx );
+// }
+
+// //Generate lowercase characters
+// function generateLowerCase() {
+//   for( var j = 0; j < criteriaLengths[i]; j++ ) {
+//         var max = 26;
+//           var charIdx = Math.floor( Math.random() * max );
+//           password.push( alphabet[charIdx] );   
+//       }
+//     }
+// }
+
+// function generateUpperCase() {
+//   for( var j = 0; j < criteriaLengths[i]; j++ ) {
+//     var max = 26;
+//       var charIdx = Math.floor( Math.random() * max );  
+//       password.push( alphabet[charIdx].toUpperCase() );
+//   }
+// }
+
+// function generateNumeric() {
+
+// }
+
+// function generateSpecialChars() {
+
+// }
