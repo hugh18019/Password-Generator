@@ -1,92 +1,36 @@
-# 03 JavaScript: Password Generator
+# Portfolio
 
-## Your Task
+Password generator is a web application that generates password per the requirement of the user. It prompts the user to specify a number of criteria such as the total lenght of the password, and whether or not the password contains certain types of characters such as lowercase, uppercase, numeric, or special characters.
 
-This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+## Installation
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+To view the website locally, first go into the folder called "Password-Generator" that contains all the related files of the site, and make sure that the index.html file is inside the folder "Develop" at the root, along with the files "style.css", "script.js". After checking that all the files are in place, simply go into the "Develop" folder and open the index.html to view the website.
 
-## User Story
+To view the published site through a browser, simply click on this link "https://hugh18019.github.io/Portfolio/".
 
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+## Technology Used
 
-## Acceptance Criteria
+The index.html file of the project uses the Hypertext Markup Language( HTML ) to maintain a logical structure that contains all parts of the site.
+The style.css uses css to select tags used by the index.html file to apply styles and manipulations to them to achieve the required look and functionality and interactivity of the website.
+The script.js handles the main functionality of the site, such as prompting for information and using that information as a guideline to perform a series of steps and generate the password.
 
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
+## Main Features
 
-## Mock-Up
+The Generate Password button initializes the process of generating the password. After it is pressed, an alert box appears that prompts the user to specify a length of the password between 8 and 12. It then asks the user to select from 4 criteria as a guideline to generate the password. Afterwards, it generates characters for each criterion up till the numbers of character matches the assigned length for that criterion. After all characters for all selected criteria are generated, it calles the shuffle function to randomly sort the password. This shuffle process is repeated two times for greater randomness in terms of the position of each character in the final password.
 
-The following image shows the web application's appearance and functionality:
+Here is a few screenshots of the features:
 
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
+![demo1](1.gif 'demo1')
 
-## Grading Requirements
+![demo2](2.gif 'demo2')
 
-This homework is graded based on the following criteria: 
+![demo3](2.gif 'demo3')
 
-### Technical Acceptance Criteria: 40%
+## Links
 
-* Satisfies all of the preceding acceptance criteria plus the following:
+Link to deployed site: https://hugh18019.github.io/Password-Generator/ \
+Link to code repo: https://github.com/hugh18019/Password-Generator
 
-  * The homework should not produce any errors in the console when you inspect it using Chrome DevTools.
+## License & copyright
 
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+Licensed under the [MIT License](LICENSE).
