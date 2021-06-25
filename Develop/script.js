@@ -32,31 +32,38 @@ generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword() {
-  getLength();
-  console.log( totalLength );
+  if( getLength() == null ) {
+    return;
+  }
+
+  console.log( "got here 2" );
   getCharTypes();
-  console.log( selectedCriteria );
+
   getCritLength();
-  console.log( criteriaLengths );
+
   var password = createPassword();
-  console.log( "Before shuffling, password is: " + password );
+
+  //Randomly sorts the password array in two passes
   shuffle( password );
-  console.log( "After shuffling, password is: " + password );
+  shuffle( password );
+
   return password;
 }
 
-
+// Asks the user for the total lenght of the password
 function getLength() {
   var length = prompt( "Enter the length between 8 and 128 for the password." );
-  // while( typeof length != Number ) {
-  //   length = prompt( "Enter a number for the length of the password." );
-  // }
+
+  while( isNaN( length ) ) {
+    length = prompt( "Enter a number for the length of the password." );
+  }
   while( length < 8 || length > 128 ) {
     length = prompt( "Enter a length between 8 and 128." );
   }
   totalLength = length;
 }
 
+// Asks the user to select the desired criteria of the password
 function getCharTypes() {
   for( var key of allCriteria ) {
     var select = confirm( "select " + key + "?" );
@@ -66,8 +73,11 @@ function getCharTypes() {
   }
 }
 
+// Randomly distribute the total length of the password across each of the selected criterion.
 function getCritLength() {
   for( var i = 0; i < selectedCriteria.length; i++ ) {
+    // For the 1st criterion, the number of characters is 
+    // between 1 and (the total number of characters - the number of the rest of the criteria).
     if( i === 0 ) {
       var criteriaLeft = selectedCriteria.length - 1;
       var maxLength = totalLength - criteriaLeft;
@@ -75,11 +85,16 @@ function getCritLength() {
       criteriaLengths.push( length );
       lengthSoFar = lengthSoFar + length;
     }
+    // For the last criterion, the number of characters 
+    // should be ( total number of characters ) - ( number of chars so far )
     else if( i === selectedCriteria.length - 1 ) {
       var length = totalLength - lengthSoFar;
       lengthSoFar = totalLength;
       criteriaLengths.push( length );
     }
+    // For all the criteria in between, the number of characters should be 
+    // between 1 and 
+    // ( the total number of characters - number of chars so far - number of the rest of the criteria )
     else {
       var criteriaLeft = selectedCriteria.length - 1 - i;
       var maxLength = totalLength - lengthSoFar - criteriaLeft;
@@ -90,81 +105,31 @@ function getCritLength() {
   }
 }
 
-
+// Creates the password that contains each criterion as 
+// a block of characters groupped together
+// and returns the password
 function createPassword() {
   const password = [];
-  for( var i = 0; i < criteriaLengths.length; i++ ) {
+  for( var i = 0; i < selectedCriteria.length; i++ ) {
       if( selectedCriteria[i] == "lowercase" ) {
-        for( var j = 0; j < criteriaLengths[i]; j++ ) {
-          var max = 26;
-            var charIdx = Math.floor( Math.random() * max );
-            password.push( alphabet[charIdx] );   
-        } 
+         generateLowerCase();
       }
       else if( selectedCriteria[i] == "uppercase") {
-        for( var j = 0; j < criteriaLengths[i]; j++ ) {
-          var max = 26;
-            var charIdx = Math.floor( Math.random() * max );  
-            password.push( alphabet[charIdx].toUpperCase() );
-        }
+        generateUpperCase();
       }
       else if( selectedCriteria[i] == "numeric" ) {
-        for( var j = 0; j < criteriaLengths[i]; j++ ) {
-          var max = 10;
-        var charIdx = Math.floor( Math.random() * max );
-        password.push( numbers[charIdx] );
-        }
+        generateNumeric();
       }
       else if( selectedCriteria[i] == "special characters" ) {
-        for( var j = 0; j < criteriaLengths[i]; j++ ) {
-          var max = special_characters.length;
-        var charIdx = Math.floor( Math.random() * max );
-        password.push( special_characters[charIdx] );
-        }
+        generateSpecialChars();
       }
   }
-
   return password;
 }
 
-//Create characters one by one.
-//When creating each character, randomly choose its criteria
-//Repeat this process until we have the required number of characters
-function createPassword2() {
-  var password = [];
-  for( var i = 0; i < totalLength; i++ ) {
-    var curCritIdx = randomCrit();
-    if( selectedCriteria[curCritIdx] == "lowercase" ) {
-      generateLowerCase( curCritIdx, password );
-    }
-    else if( selectedCriteria[curCritIdx] == "uppercase" ) {
-      generateUpperCase( curCritIdx, password );
-    }
-    else if( selectedCriteria[curCritIdx] == "numeric" ) {
-      generateNumeric( curCritIdx, password );
-    }
-    else {
-      generateSpecialChars( curCritIdx, password );
-    }
-  }
-  return password;
-}
 
- //Randomly generate an index that can be used to address an element in selectedCriteria
-function randomCrit() {
-  var max = selectedCriteria.length;
-
-  var shuffledCriteria = shuffle();
-
-  var critIdx = Math.floor( Math.random() * max );
-    // var curCrit = selectedCriteria[  ] critIdx );
-  console.log( "The randomly selected category is: " + 
-  shuffledCriteria[critIdx] );
-  return critIdx;
-}
-
+//Randomly sorts the array passed in
 function shuffle( arr ) {
-  
   for(var i = arr.length - 1; i > 0; i-- ) {
     const j = Math.floor(Math.random() * i);
     const temp = arr[i];
@@ -174,30 +139,42 @@ function shuffle( arr ) {
 }
 
 
-//Generate lowercase characters
+//Generates lowercase characters as a group and pushes them onto
+// the password array
 function generateLowerCase( curCritIdx, password ) {
-      var max = 26;
-      var charIdx = Math.floor( Math.random() * max );
-      password.push( alphabet[charIdx] );   
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
+    var max = 26;
+    var charIdx = Math.floor( Math.random() * max );
+    password.push( alphabet[charIdx] );   
+  }  
 }
 
-//Generate uppercase characters
+//Generates uppercase characters as a group and pushes them onto
+// the password array
 function generateUpperCase( curCritIdx, password ) {
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
     var max = 26;
     var charIdx = Math.floor( Math.random() * max );  
     password.push( alphabet[charIdx].toUpperCase() );
+  }
 }
 
-//Generate numeric characters
+//Generates numeric characters as a group and pushes them onto
+// the password array
 function generateNumeric( curCritIdx, password ) {
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
     var max = 10;
     var charIdx = Math.floor( Math.random() * max );
     password.push( numbers[charIdx] );
+  }
 }
 
-//Generate special characters
+//Generates special characters as a group and pushes them onto
+// the password array
 function generateSpecialChars( curCritIdx, password ) {
+  for( var j = 0; j < criteriaLengths[i]; j++ ) {
     var max = special_characters.length;
     var charIdx = Math.floor( Math.random() * max );
     password.push( special_characters[charIdx] );
+  }
 }
