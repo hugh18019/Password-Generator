@@ -38,7 +38,11 @@ function generatePassword() {
   console.log( selectedCriteria );
   getCritLength();
   console.log( criteriaLengths );
-  return createPassword();
+  var password = createPassword();
+  console.log( "Before shuffling, password is: " + password );
+  shuffle( password );
+  console.log( "After shuffling, password is: " + password );
+  return password;
 }
 
 
@@ -128,7 +132,7 @@ function createPassword() {
 //Repeat this process until we have the required number of characters
 function createPassword2() {
   var password = [];
-  for( var i = 0; i <= totalLength; i++ ) {
+  for( var i = 0; i < totalLength; i++ ) {
     var curCritIdx = randomCrit();
     if( selectedCriteria[curCritIdx] == "lowercase" ) {
       generateLowerCase( curCritIdx, password );
@@ -143,49 +147,57 @@ function createPassword2() {
       generateSpecialChars( curCritIdx, password );
     }
   }
+  return password;
 }
 
  //Randomly generate an index that can be used to address an element in selectedCriteria
 function randomCrit() {
   var max = selectedCriteria.length;
-    var critIdx = Math.floor( Math.random() * max );
-    var curCrit = selectedCriteria( critIdx );
-    return critIdx;
+
+  var shuffledCriteria = shuffle();
+
+  var critIdx = Math.floor( Math.random() * max );
+    // var curCrit = selectedCriteria[  ] critIdx );
+  console.log( "The randomly selected category is: " + 
+  shuffledCriteria[critIdx] );
+  return critIdx;
 }
+
+function shuffle( arr ) {
+  
+  for(var i = arr.length - 1; i > 0; i-- ) {
+    const j = Math.floor(Math.random() * i);
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+}
+
 
 //Generate lowercase characters
 function generateLowerCase( curCritIdx, password ) {
-  for( var j = 0; j < criteriaLengths[curCritIdx]; j++ ) {
-        var max = 26;
-          var charIdx = Math.floor( Math.random() * max );
-          password.push( alphabet[charIdx] );   
-      }
-    }
+      var max = 26;
+      var charIdx = Math.floor( Math.random() * max );
+      password.push( alphabet[charIdx] );   
 }
 
 //Generate uppercase characters
 function generateUpperCase( curCritIdx, password ) {
-  for( var j = 0; j < criteriaLengths[curCritIdx]; j++ ) {
     var max = 26;
-      var charIdx = Math.floor( Math.random() * max );  
-      password.push( alphabet[charIdx].toUpperCase() );
-  }
+    var charIdx = Math.floor( Math.random() * max );  
+    password.push( alphabet[charIdx].toUpperCase() );
 }
 
 //Generate numeric characters
 function generateNumeric( curCritIdx, password ) {
-  for( var j = 0; j < criteriaLengths[curCritIdx]; j++ ) {
     var max = 10;
     var charIdx = Math.floor( Math.random() * max );
     password.push( numbers[charIdx] );
-  }
 }
 
 //Generate special characters
 function generateSpecialChars( curCritIdx, password ) {
-  for( var j = 0; j < criteriaLengths[curCritIdx]; j++ ) {
     var max = special_characters.length;
     var charIdx = Math.floor( Math.random() * max );
     password.push( special_characters[charIdx] );
-  }
 }
