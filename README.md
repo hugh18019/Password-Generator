@@ -1,4 +1,4 @@
-# Portfolio
+# Password Generator
 
 Password generator is a web application that generates password per the requirement of the user. It prompts the user to specify a number of criteria such as the total lenght of the password, and whether or not the password contains certain types of characters such as lowercase, uppercase, numeric, or special characters.
 
