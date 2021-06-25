@@ -16,7 +16,7 @@ The script.js handles the main functionality of the site, such as prompting for 
 
 ## Main Features
 
-The Generate Password button initializes the process of generating the password. After it is pressed, an alert box appears that prompts the user to specify a length of the password between 8 and 12. It then asks the user to select from 4 criteria as a guideline to generate the password. Afterwards, it generates characters for each criterion up till the numbers of character matches the assigned length for that criterion. After all characters for all selected criteria are generated, it calles the shuffle function to randomly sort the password. This shuffle process is repeated two times for greater randomness in terms of the position of each character in the final password.
+The Generate Password button initializes the process of generating the password. After it is pressed, an alert box appears that prompts the user to specify a length of the password between 8 and 12. It then asks the user to select from 4 criteria as a guideline to generate the password. Afterwards, it generates characters for each criterion up till the numbers of character matches the assigned length for that criterion. After all characters for all selected criteria are generated, it calles the shuffle function to randomly sort the password by making use of the Fisher-Yates algorithm. This shuffle process is repeated two times for greater randomness in terms of the position of each character in the final password.
 
 Here is a few screenshots of the features:
 

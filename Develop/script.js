@@ -17,24 +17,26 @@ const criteriaLengths = [];
 var generateBtn = document.querySelector("#generate");
 var clearBtn = document.querySelector("#clear");
 
+
+
+
 // Write password to the #password input
 function writePassword() {
-  
   var password = generatePassword();
+
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
   
 }
 
 function clearPassword() {
-  var passwordText = document.querySelector("#password");
-  passwordText.value = " ";
+  var passwordEl = document.querySelector("#password");
+  passwordEl.value = '   ';
 }
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 clearBtn.addEventListener("click", clearPassword);
 
 // Gets the length of the password from the user
@@ -44,11 +46,12 @@ clearBtn.addEventListener("click", clearPassword);
 // Randomly shuffles the created password 
 // Returns the shuffled password
 function generatePassword() {
-// Variable that stores the length of the password
-var totalLength = 0;
-// Variable that stores the current total number of characters assigned 
-// to the criteria
-var lengthSoFar = 0;
+
+  // Variable that stores the length of the password
+  var totalLength = 0;
+  // Variable that stores the current total number of characters assigned 
+  // to the criteria
+  var lengthSoFar = 0;
 
   totalLength = getLength();
   // If totalLength is null, which is the case when the user clicks cancel
@@ -76,7 +79,10 @@ var lengthSoFar = 0;
 // Asks the user for the total lenght of the password
 // and returns the input from the user
 function getLength() {
-  var length = prompt( "Enter the length between 8 and 128 for the password." );
+
+  var length = prompt( "Enter a length between 8 and 128 for the password." );
+
+
   //During the prompt, if the user clicks cancel the generating process 
   //is terminated
   if( length == null ) {
